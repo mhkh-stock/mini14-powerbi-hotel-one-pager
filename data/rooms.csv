@@ -1,0 +1,41 @@
+room_id,room_type,nightly_rate_pkr,floor,capacity
+STD-101,Standard,8000,1,2
+STD-102,Standard,8000,1,2
+STD-103,Standard,8000,1,2
+STD-104,Standard,8000,1,2
+STD-105,Standard,8000,1,2
+STD-106,Standard,8000,1,2
+STD-107,Standard,8000,1,2
+STD-108,Standard,8000,1,2
+STD-109,Standard,8000,1,2
+STD-110,Standard,8000,1,2
+STD-111,Standard,8000,1,2
+STD-112,Standard,8000,1,2
+STD-113,Standard,8000,1,2
+STD-114,Standard,8000,1,2
+STD-115,Standard,8000,1,2
+STD-116,Standard,8000,1,2
+STD-117,Standard,8000,1,2
+STD-118,Standard,8000,1,2
+DLX-201,Deluxe,12000,2,3
+DLX-202,Deluxe,12000,2,3
+DLX-203,Deluxe,12000,2,3
+DLX-204,Deluxe,12000,2,3
+DLX-205,Deluxe,12000,2,3
+DLX-206,Deluxe,12000,2,3
+DLX-207,Deluxe,12000,2,3
+DLX-208,Deluxe,12000,2,3
+DLX-209,Deluxe,12000,2,3
+DLX-210,Deluxe,12000,2,3
+DLX-211,Deluxe,12000,2,3
+DLX-212,Deluxe,12000,2,3
+EXE-301,Executive Suite,20000,3,2
+EXE-302,Executive Suite,20000,3,2
+EXE-303,Executive Suite,20000,3,2
+EXE-304,Executive Suite,20000,3,2
+EXE-305,Executive Suite,20000,3,2
+EXE-306,Executive Suite,20000,3,2
+FAM-201,Family Suite,16000,2,4
+FAM-202,Family Suite,16000,2,4
+FAM-203,Family Suite,16000,2,4
+FAM-204,Family Suite,16000,2,4

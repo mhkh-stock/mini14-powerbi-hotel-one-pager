@@ -1,0 +1,63 @@
+// Mini #14 — DAX measures for the Margalla View Hotel one-pager
+// Paste into Power BI: Modeling -> New measure, one block at a time.
+// Every measure has a Python-computed twin in src/checks.py — the two
+// must agree, or the model (not the measure) is wrong.
+// Window: Jan–Jun 2026, 40 rooms, 181 days -> 7,240 available room-nights.
+
+// ---- Revenue ----
+Total Revenue =
+CALCULATE (
+    SUM ( fact_payments[amount_pkr] ),
+    fact_payments[status] = "paid"
+)
+
+// Room-nights actually sold: stayed bookings only. Cancelled and
+// no-show bookings never occupied a room.
+Room Nights Sold =
+SUMX (
+    FILTER ( fact_bookings, fact_bookings[status] = "stayed" ),
+    fact_bookings[nights]
+)
+
+// 40 rooms x 181 days = 7,240 available room-nights. If the hotel
+// adds rooms or the window changes, update the two constants.
+Occupancy Rate =
+DIVIDE ( [Room Nights Sold], 40 * 181 )
+
+ADR =
+DIVIDE ( [Total Revenue], [Room Nights Sold] )
+
+RevPAR =
+DIVIDE ( [Total Revenue], 40 * 181 )
+
+// ---- Bookings ----
+Total Bookings = COUNTROWS ( fact_bookings )
+
+Cancellation Rate =
+DIVIDE (
+    COUNTROWS ( FILTER ( fact_bookings, fact_bookings[status] = "cancelled" ) ),
+    [Total Bookings]
+)
+
+Avg Length of Stay =
+AVERAGEX (
+    FILTER ( fact_bookings, fact_bookings[status] = "stayed" ),
+    fact_bookings[nights]
+)
+
+Avg Guests per Booking =
+AVERAGEX (
+    FILTER ( fact_bookings, fact_bookings[status] = "stayed" ),
+    fact_bookings[guests]
+)
+
+// ---- Channel mix (use in the bar visual; the measure is the share) ----
+Revenue Share by Channel =
+DIVIDE (
+    [Total Revenue],
+    CALCULATE ( [Total Revenue], ALL ( fact_bookings[channel] ) )
+)
+
+// ---- Payments health ----
+Refunded Payments =
+COUNTROWS ( FILTER ( fact_payments, fact_payments[status] = "refunded" ) )
